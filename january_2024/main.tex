@@ -1,6 +1,7 @@
 \documentclass[11pt,twoside]{amsart}
-\usepackage{amssymb, amsmath, enumerate, mathpazo, hyperref}
+\usepackage{amssymb, amsmath, enumerate, mathpazo, hyperref, mathtools}
 
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \usepackage[normalem]{ulem}
 \usepackage{fullpage}
 \usepackage[T1]{fontenc}
@@ -16,6 +17,7 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
+
 
 \title{January 2024 Preliminary Exam}
 \author{}
@@ -36,11 +38,46 @@
   for all $a < c < b$. Show that $f$ is Riemann integrable on $[a,b]$. 
 \end{prob}
     
+\newpage
 \begin{prob}
   Suppose $f: \RR \to \RR$ is differentiable and $\lim_{x \to \infty} f'(x) = 0$. Show that 
   if the sequence $\{f(n)\}_{n \in \NN}$ converges, then the limit $\lim_{x \to \infty} f(x)$ exists. 
 \end{prob}
+\begin{proof}
+  Let $L := \lim_{n \in \NN, n \to \infty} f(n)$. We will show $\lim_{x \to \infty} f(x) = L$.\\
+  Let $\epsilon > 0$. Then there exists an $N \in \NN$ such that $|L - f(m)| < \epsilon/2$ for all 
+  $m \geq N$. Similarly, there exists an $M \in \NN$ such that $|f'(p)| < \epsilon/2$ for all 
+  $p \geq M$. Set $P = \max\{ N, M \}$. Then for all $x \geq P$ set $\tilde{x} = \ceil{x}$
+  so that $\tilde{x} \in \NN$ and $\tilde{x} \geq P$ as well. Then 
 
+  \begin{align*}
+    |L - f(x)| &= |L - f(x) - f(\tilde{x}) + f(\tilde{x})|\\
+               &\leq |L - f(\tilde{x})| + |f(\tilde{x}) - f(x)| \text{ by the triangle inequality,}\\
+               &< \epsilon/2 + |f(\tilde{x}) - f(x)| \text{ since } \tilde{x} \geq P. 
+  \end{align*}
+
+  It remains to show that $|f(\tilde{x}) - f(x)| < \epsilon/2$. Since $f$ is differentiable, by the 
+  Mean Value Theorem, there exists $c \in (x, \tilde{x})$ such that 
+  
+  \begin{equation*}
+    \frac{|f(\tilde{x}) - f(x)|}{|\tilde{x} - x|} = |f'(c)| < \epsilon/2 
+  \end{equation*}
+  where the inequality holds since $c \geq P$. Then, 
+
+  \begin{equation*}
+    |f(\tilde{x}) - f(x)| <  |\tilde{x} - x|\epsilon/2.
+  \end{equation*}
+
+  Putting it altogether, we get the required bound 
+
+  \begin{equation*}
+    |L - f(x)| < \epsilon/2 + |f(\tilde{x}) - f(x)| < \epsilon/2 + \epsilon/2 = \epsilon. 
+  \end{equation*}
+
+  This shows that the limit $\lim_{x \to \infty} f(x)$ equals $L$, and hence, exists. 
+\end{proof}
+
+\newpage
 \begin{prob}
   A function $f: \RR \to \RR$ is called Lipschitz if there exists $M > 0$ such that 
   \begin{equation*}
