@@ -1,0 +1,159 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\PassOptionsToPackage{svgnames}{xcolor}
+\PassOptionsToPackage{x11names}{xcolor}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{boldline}
+\usepackage{tikz-cd}
+\usepackage{siunitx}
+\usepackage{blkarray}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{cleveref}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usetikzlibrary{decorations.markings, arrows} % decorations.markings; arrows.meta
+\tikzset{
+mid arrow/.style={postaction={decorate, decoration={
+markings,
+mark=at position .5 with {\arrow{Straight Barb}}
+}}},
+}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\setlength{\parskip}{8pt}
+\setlength{\parindent}{0in}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This routine removes the extra white space
+%% from the proof environment.               
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \partopsep=\z@skip \topsep=\z@skip
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This routine defines a new proof environment
+%% for "answers" rather than proofs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newenvironment{answer}[1][Answer.]{\par
+  %\pushQED{\qed}%
+  \normalfont \partopsep=\z@skip \topsep=\z@skip
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1\@addpunct{.}]\ignorespaces
+}{%
+  %\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% These theorem styles remove the extra 
+%% white space which is otherwise present 
+%% when giving a new theorem or definition.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheoremstyle{itplain}{\parskip}{0pt}{\itshape}{}{\bf}{.}{.5em}{} 
+\newtheoremstyle{rmplain}{\parskip}{0pt}{}{}{\bf}{.}{.5em}{} 
+
+\theoremstyle{itplain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{rmplain}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{case}{Case}
+\newtheorem{subcase}{Subcase}
+\numberwithin{subcase}{case}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a collection of new commands which
+%% are used throughout the paper.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\multiset#1#2{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+
+\DeclareMathOperator{\Ima}{im}
+\DeclareMathOperator{\inv}{inv}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\characteristic}{char}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\dist}{d}
+\DeclareMathOperator{\Dist}{D}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\spanv}{span}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\measure}{m}
+\DeclareMathOperator{\discrim}{D}
+\newcommand{\define}[1]{\emph{#1}}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\ef}{ev}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\asc}{asc}
+\DeclareMathOperator{\des}{des}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\mS}{\mathbb{S}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\pd}{\partial}
+\newcommand{\Hom}{\textrm{Hom}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\mymod}[1]{\pmod{#1}}
+\newcommand{\ddd}{\displaystyle}
+\newcommand{\Map}{\textrm{Map}}
+%\newcommand{\Ima}{\textrm{im}}
+\newcommand{\card}[1]{\left| #1 \right|}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\ninf}{n\rightarrow\infty}
+\newcommand{\congruence}[3]{\ensuremath{{#1}\equiv #2 \bmod{#3}}}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\ovr}{\,|\,}
+\newcommand{\qbinom}{\genfrac{[}{]}{0pt}{}}
+\newcommand{\lra}{\longrightarrow}

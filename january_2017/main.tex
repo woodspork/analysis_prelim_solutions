@@ -1,5 +1,5 @@
 \documentclass[11pt,twoside]{amsart}
-\usepackage{amssymb, amsmath, enumerate, mathpazo, hyperref}
+\usepackage{amssymb, amsmath, enumerate, hyperref}
 
 \usepackage[normalem]{ulem}
 \usepackage{fullpage}
@@ -7,15 +7,10 @@
 \renewcommand{\labelitemi}{\guillemotright}
 \usepackage{mathrsfs}
 \usepackage{float}
+\usepackage{capstone}
 
 \theoremstyle{plain}
 \newtheorem{prob}{Problem}
-
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\CC}{\mathbb{C}}
-\newcommand{\NN}{\mathbb{N}}
-\newcommand{\QQ}{\mathbb{Q}}
 
 \title{January 2017 Preliminary Exam}
 \author{}
@@ -23,9 +18,80 @@
 \begin{document}
 \maketitle
 
-\begin{proof}
-\end{proof}
+\begin{center}
+{\bf\Large Advanced Calculus, Mandatory Problems}
+\end{center}
+\setcounter{enumi}{2}
+\begin{enumerate}
+    \item Suppose that $f:\R \rightarrow \R$ is differentiable and $f'$ is continuous.
+    Show that the restriction of $f$ to any closed interval $[a,b]$ is Lipschitz continuous.
+    \vspace{12pt}
+    \item Suppose that $(X,d)$ is a metric space, fix a point $a$, and let $f(x) = d(a,x)$.
+    Show that the function $f: X \rightarrow \R$ is uniformly continuous.
+\end{enumerate}
+\vspace{12pt}
+\begin{center}
+{\bf\Large Advanced Calculus, Optional Problems}
+\end{center}
 
+\begin{enumerate}
+    \item Let $f:(a,b) \to \R$ be differentiable.
+    Suppose that $f'(c) = 0$ for some $c\in (a,b)$.
+    Show that if $f$ has a local minimum at $x=c$ and $f''(c)$ exists, then $f''(c) \geq 0$.
+    \vspace{12pt}
+    \item Suppose that $f\in C[0,1]$ and 
+    \[
+        \int_a^b{x^nf(x)dx} = 0 \textrm{\hspace{12pt} for all integer } n\geq 0.
+    \]
+    Show that $f$ is the zero function.
+\end{enumerate}
+\newpage
+
+\begin{center}
+{\bf\Large Real Analysis, Mandatory Problems}
+\end{center}
+\setcounter{enumi}{0}
+\begin{enumerate}
+    \item For $f \in L^1(\R)$, the Fourier transform of $f$ is defined by
+    \[
+        \hat{f}(\xi) = \int_{\R}{f(x)e^{-2\pi ix\xi}dx}.
+    \]
+    \vspace{12pt}
+    \begin{enumerate}
+    \item Show that $\hat{f}$ is continuous in $\R$.
+    \item Show that $\hat{f} \rightarrow 0$ as $\card{\xi} \rightarrow \infty$.
+    For this part, you may assume that the set of all linear combinations of characteristic functions over bounded open intervals is dense in $L^1(\R)$.
+    \end{enumerate}
+    \vspace{12pt}
+    \item Let $f$ be an integrable function in $\R^d$.
+    Show that
+    \[
+        \lim_{\alpha\rightarrow\infty}{\alpha m\left\{x\in\R^d : \card{f(x)}>\alpha\right\}} = 0.
+    \]
+\end{enumerate}
+
+\begin{center}
+    {\bf\Large Real Analysis, Optional Problems}
+\end{center}
+\setcounter{enumi}{2}
+\begin{enumerate}
+    \item \begin{enumerate}
+    \item State Egorov's Theorem.
+    \item Use Egorov's Theorem to prove the Bounded Convergence Theorem: if ${f_k}$ is a sequence of measurable functions on a measurable set $E$ with $m(E) < \infty$, such that $f_k \rightarrow f$ a.e. in $E$ and $\card{f_k} \leq M$ a.e. in $E$ for some finite constant $M$, then
+    \[
+        \int_E{\card{f_k-f}dx}\rightarrow \textrm{\hspace{12pt} as } k\rightarrow\infty.
+    \]
+    \end{enumerate}
+    \vspace{12pt}
+    \item For a measurable function $f$ on a measurable set $E\subset\R$, define
+    \[
+        \| f \|_{L^{\infty}(E)} = \inf\left\{\alpha : m\left\{x\in E : \card{f(x)}>\alpha\right\}\right\} = 0.
+    \]
+    Show that if $\| f \|_{L^{\infty}(E)} < \infty$ and $0 < m(E) < \infty$, then
+    \[
+        \lim_{p\rightarrow\infty}\left(\frac{1}{m(E)}\int_{E}{\card{f}^pdx}\right)^{\frac{1}{p}} = \| f \|_{L^{\infty}(E)}.
+    \]
+\end{enumerate}
 \end{document}
 
 
