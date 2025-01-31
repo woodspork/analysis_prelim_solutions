@@ -143,7 +143,12 @@
         Thus, $f$ is uniformly continuous.
     \end{proof}
 
-    \newpage\item Let $f:(a,b) \to \R$ be differentiable.
+\newpage
+\begin{center}
+    {\bf\Large Advanced Calculus, Optional Problems}
+\end{center}    
+
+    \item Let $f:(a,b) \to \R$ be differentiable.
     Suppose that $f'(c) = 0$ for some $c\in (a,b)$.
     Show that if $f$ has a local minimum at $x=c$ and $f''(c)$ exists, then $f''(c) \geq 0$.
 
@@ -166,6 +171,46 @@
     \begin{proof}
         
     \end{proof}
+\end{enumerate}
+
+\newpage
+\newpage
+\begin{center}
+    {\bf\Large Real Analysis, Mandatory Problems}
+\end{center}
+\begin{enumerate}
+    \item For $f \in L^1(\R)$, the Fourier transform of $f$ is defined by
+    \[
+        \hat{f}(\xi) = \int_{\R}{f(x)e^{-2\pi ix\xi}dx}.
+    \]
+
+    \begin{enumerate}
+    \item Show that $\hat{f}$ is continuous in $\R$.
+    
+        \begin{proof}
+            Since $f\in L^1(\R)$, we know that $f$ is integrable.
+            That is, $\int_{\R}{f(x)} < \infty$.
+            Furthermore, since $f$ is integrable, $\card{f}$ is as well.
+            
+            Consider some sequence $\xi_n \rightarrow \xi$ and let $g_n(x) = f(x)e^{-2\pi ix\xi_n}$.
+            Observe that this is a measurable function for all $n$ as it is the product of two measurable functions.
+            Furthermore, $g_n(x) \rightarrow f(x)e^{-2\pi ix\xi} \eqqcolon g(x)$ for all $x\in\R$.
+            Next, note that $\card{f(x)e^{-2pi ix\xi_n}} = \card{f(x)}$.
+            Thus, we have that $g_n(x) \leq \card{f(x)}$ where $f$ is an integrable function and $g_n$ is a sequence of measurable functions with $g_n(x)\rightarrow g(x)$.
+            So by the Dominated Convergence Theorem, we know that
+            \[
+                \int_{\R}{f(x)e^{-2\pi ix\xi_n}dx} \rightarrow \int_{\R}{f(x)e^{-2\pi ix\xi}dx}.
+            \]
+            That is, $\hat{f}(\xi_n) \rightarrow \hat{f}(\xi)$.
+            Recall that a function $h$ is continuous if and only if it takes convergent sequences to convergent sequences.
+            In other words, if $x_n \rightarrow x$, then $h(x_n) \rightarrow h(x)$.
+
+            Therefore, since $\xi_n \rightarrow \xi$ and we have that $\hat{f}(\xi_n) \rightarrow \hat{f}(\xi)$, it follows that $\hat{f}$ is continuous.
+        \end{proof}
+
+    \item Show that $\hat{f} \rightarrow 0$ as $\card{\xi} \rightarrow \infty$.
+    For this part, you may assume that the set of all linear combinations of characteristic functions over bounded open intervals is dense in $L^1(\R)$.
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}
